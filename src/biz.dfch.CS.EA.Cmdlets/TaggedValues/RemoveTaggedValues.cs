@@ -69,7 +69,7 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
             if (null == taggedValue)
             {
                 var ex = new KeyNotFoundException(string.Format(Message.RemoveTaggedValues_KeyNotFoundException, Name));
-                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.ObjectNotFound, taggedValue));
+                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.ObjectNotFound, Name));
                 WriteObject(false);
                 return;
             }
