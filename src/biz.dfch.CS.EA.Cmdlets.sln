@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biz.dfch.CS.EA.Cmdlets.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{314F8563-B8CE-402C-96AD-468349025B57}"
 	ProjectSection(SolutionItems) = preProject
+		biz.dfch.CS.EA.Cmdlets.nuspec = biz.dfch.CS.EA.Cmdlets.nuspec
 		CommonAssemblySettings.cs = CommonAssemblySettings.cs
 	EndProjectSection
 EndProject
