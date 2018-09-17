@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>biz.dfch.CS.EA.Cmdlets</id>
+        <version>1.0.0</version>
+        <title>biz.dfch.CS.EA.Cmdlets</title>
+        <authors>d-fens GmbH</authors>
+        <owners>d-fens GmbH</owners>
+		<licenseUrl>https://github.com/dfensgmbh/biz.dfch.CS.EA.Cmdlets/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/dfensgmbh/biz.dfch.CS.EA.Cmdlets</projectUrl>
+        <iconUrl>https://avatars1.githubusercontent.com/u/8310404?v=3&amp;s=200</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>biz.dfch.CS.EA.Cmdlets
+======================
+
+PoSH Cmdlets for Enterprise Architect
+		    </description>
+        <summary>PoSH Cmdlets for Enterprise Architect</summary>
+        <releaseNotes>20180917
+FEATURES
+
+* Initial release
+</releaseNotes>
+        <copyright>Copyright © 2018 d-fens GmbH</copyright>
+        <tags>dfch enterprise architect C# PowerShell</tags>
+        <dependencies>
+          <dependency id="biz.dfch.CS.Commons" version="1.12.0" />
+          <dependency id="CodeContracts.MSBuild" version="1.12.0" />
+          <dependency id="Microsoft.PowerShell.5.ReferenceAssemblies" version="1.1.0" />
+          <dependency id="Newtonsoft.Json" version="9.0.1" />
+          <dependency id="System.ComponentModel.Annotations" version="4.3.0" />
+        </dependencies>
+    </metadata>
+	<files>
+		<file src="biz.dfch.CS.EA.Cmdlets\bin\Release\biz.dfch.CS.EA.Cmdlets.dll" target="lib\" />
+		<file src="biz.dfch.CS.EA.Cmdlets\bin\Release\CodeContracts\biz.dfch.CS.EA.Cmdlets.Contracts.dll" target="lib\CodeContracts" />
+	</files>
+</package>
