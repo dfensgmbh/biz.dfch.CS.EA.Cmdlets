@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biz.dfch.CS.EA.Cmdlets", "b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biz.dfch.CS.EA.Cmdlets.Tests", "biz.dfch.CS.EA.Cmdlets.Tests\biz.dfch.CS.EA.Cmdlets.Tests.csproj", "{318B6FA4-4CF9-45EC-A35A-D085BA8AD71D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{314F8563-B8CE-402C-96AD-468349025B57}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAssemblySettings.cs = CommonAssemblySettings.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

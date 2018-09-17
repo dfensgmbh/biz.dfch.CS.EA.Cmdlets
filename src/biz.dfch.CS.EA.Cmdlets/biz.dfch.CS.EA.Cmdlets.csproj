@@ -149,6 +149,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblySettings.cs">
+      <Link>Properties\CommonAssemblySettings.cs</Link>
+    </Compile>
     <Compile Include="IoCScannerTypeCmdlet.cs" />
     <Compile Include="Message.Designer.cs">
       <AutoGen>True</AutoGen>
