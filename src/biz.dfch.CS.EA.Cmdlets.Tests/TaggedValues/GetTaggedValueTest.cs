@@ -27,7 +27,7 @@ using Telerik.JustMock;
 namespace biz.dfch.CS.EA.Cmdlets.Tests.TaggedValues
 {
     [TestClass]
-    public class TestCmdlet5Test
+    public class GetTaggedValueTest
     {
         [TestMethod]
         [ExpectParameterBindingException(MessagePattern = @"Repository")]
