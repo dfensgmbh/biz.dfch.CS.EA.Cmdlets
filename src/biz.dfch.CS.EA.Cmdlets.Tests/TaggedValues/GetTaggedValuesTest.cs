@@ -34,7 +34,7 @@ namespace biz.dfch.CS.EA.Cmdlets.Tests.TaggedValues
         public void InvokeWithoutParametersThrowsParameterBindingException()
         {
             var parameters = @";";
-            var results = new PsCmdletAssert2().Invoke(typeof(GetTaggedValues), parameters);
+            var results = new PsCmdletAssert2().Invoke(typeof(GetTaggedValue), parameters);
         }
 
         [TestMethod]
@@ -62,16 +62,16 @@ namespace biz.dfch.CS.EA.Cmdlets.Tests.TaggedValues
 
             var parameters = new Dictionary<string, object>
             {
-                {nameof(GetTaggedValues.Repository), repository}
+                {nameof(GetTaggedValue.Repository), repository}
                 ,
-                {nameof(GetTaggedValues.ElementGuid), elementGuid}
+                {nameof(GetTaggedValue.ElementGuid), elementGuid}
                 ,
-                {nameof(GetTaggedValues.Name), name}
+                {nameof(GetTaggedValue.Name), name}
                 ,
-                {nameof(GetTaggedValues.ValueOnly), true}
+                {nameof(GetTaggedValue.ValueOnly), true}
             };
 
-            var results = new PsCmdletAssert2().Invoke(typeof(GetTaggedValues), parameters);
+            var results = new PsCmdletAssert2().Invoke(typeof(GetTaggedValue), parameters);
             Assert.IsNotNull(results);
             Assert.AreEqual(1, results.Count);
             var result = results[0].ToString();

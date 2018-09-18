@@ -23,7 +23,7 @@ using EA;
 namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
 {
     [Cmdlet(
-         VerbsCommon.Get, "TaggedValues"
+         VerbsCommon.Get, "TaggedValue"
          ,
          ConfirmImpact = ConfirmImpact.Low
          ,
@@ -31,11 +31,11 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
          ,
          SupportsShouldProcess = true
          ,
-         HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/Get-TaggedValues/"
+         HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/Get-TaggedValue/"
     )]
     [OutputType(typeof(string[]), ParameterSetName = new [] {ParameterSets.DEFAULT})]
     [OutputType(typeof(string), ParameterSetName = new [] {ParameterSets.NAME})]
-    public class GetTaggedValues : EnterpriseArchitectCmdletBase
+    public class GetTaggedValue : EnterpriseArchitectCmdletBase
     {
         public static class ParameterSets
         {

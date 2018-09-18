@@ -15,7 +15,7 @@
  */
 
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.Contracts;
 using System.Management.Automation;
 using EA;
@@ -23,18 +23,18 @@ using EA;
 namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
 {
     [Cmdlet(
-         VerbsCommon.Remove, "TaggedValues"
+         VerbsCommon.Set, "TaggedValue"
          ,
-         ConfirmImpact = ConfirmImpact.High
+         ConfirmImpact = ConfirmImpact.Medium
          ,
          DefaultParameterSetName = ParameterSets.DEFAULT
          ,
          SupportsShouldProcess = true
          ,
-         HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/Remove-TaggedValues/"
+         HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/Set-TaggedValue/"
     )]
     [OutputType(typeof(bool), ParameterSetName = new[] { ParameterSets.DEFAULT })]
-    public class RemoveTaggedValues : EnterpriseArchitectCmdletBase
+    public class SetTaggedValue : EnterpriseArchitectCmdletBase
     {
         public static class ParameterSets
         {
@@ -51,6 +51,12 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
         [Parameter(Mandatory = false, Position = 1)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, Position = 2)]
+        public string Value { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -66,28 +72,28 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
             Contract.Assert(null != element, ElementGuid.ToString("B"));
 
             var taggedValue = element.TaggedValues.GetByName(Name) as TaggedValue;
-            if (null == taggedValue)
+            if(null != taggedValue && !Force)
             {
-                var ex = new KeyNotFoundException(string.Format(Message.RemoveTaggedValues_KeyNotFoundException, Name));
-                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.ObjectNotFound, Name));
+                var ex = new DuplicateNameException(string.Format(Message.SetTaggedValues_DuplicateNameException, Name));
+                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.InvalidData, taggedValue));
                 WriteObject(false);
                 return;
             }
 
-            for (var c = (short)(element.TaggedValues.Count -1); c >= 0; c--)
+            if (null == taggedValue)
             {
-                taggedValue = element.TaggedValues.GetAt(c) as TaggedValue;
+                taggedValue = element.TaggedValues.AddNew(Name, Value) as TaggedValue;
                 Contract.Assert(null != taggedValue);
-
-                if (Name != taggedValue.Name)
-                {
-                    continue;
-                }
-
-                element.TaggedValues.DeleteAt(c, true);
                 WriteObject(true);
-                return;
             }
+            else
+            {
+                taggedValue.Value = Value;
+                WriteObject(false);
+            }
+
+            taggedValue.Update();
+            element.TaggedValues.Refresh();
         }
     }
 }
