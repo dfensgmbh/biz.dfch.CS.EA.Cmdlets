@@ -25,10 +25,14 @@ namespace biz.dfch.CS.EA.Cmdlets
     public abstract class EnterpriseArchitectCmdletBase : PSCmdlet
     {
         public const string TRACESOURCE_NAME = "biz.dfch.CS.EA.Cmdlets";
-
         private static readonly Lazy<TraceSource> _traceSource = new Lazy<TraceSource>(() => Logger.Get(TRACESOURCE_NAME));
         private readonly TraceSource traceSource;
         protected TraceSource TraceSource => traceSource ?? _traceSource.Value;
+
+        static EnterpriseArchitectCmdletBase()
+        {
+            AutoMapper.AutoMapperConfig.Initialise();
+        }
 
         protected EnterpriseArchitectCmdletBase()
         {
