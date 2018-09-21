@@ -41,7 +41,7 @@ namespace biz.dfch.CS.EA.Cmdlets.AutoMapper
         private static readonly Lazy<bool> _compileMappings = new Lazy<bool>(() =>
         {
             // Compile mappings directly to avoid delay by expression compilation on first map
-            Mapper.Configuration.CompileMappings();
+            //Mapper.Configuration.CompileMappings();
 
             return true;
         });
