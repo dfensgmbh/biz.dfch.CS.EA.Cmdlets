@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Contracts;
 using System.Management.Automation;
@@ -59,9 +60,17 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
+            Worker();
+        }
 
-            if (!ShouldProcess(Name))
+        private void Worker()
+        {
+            Worker(this);
+        }
+
+        internal void Worker(PSCmdlet caller)
+        {
+            if (!caller.ShouldProcess(Name))
             {
                 return;
             }
@@ -74,9 +83,8 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
             var taggedValue = element.TaggedValues.GetByName(Name) as TaggedValue;
             if(null != taggedValue && !Force)
             {
-                var ex = new DuplicateNameException(string.Format(Message.SetTaggedValues_DuplicateNameException, Name));
-                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.InvalidData, taggedValue));
-                WriteObject(false);
+                var ex = new DuplicateNameException(string.Format(Message.SetTaggedValue_DuplicateNameException, Name));
+                caller.WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.InvalidData, taggedValue));
                 return;
             }
 
@@ -84,16 +92,15 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
             {
                 taggedValue = element.TaggedValues.AddNew(Name, Value) as TaggedValue;
                 Contract.Assert(null != taggedValue);
-                WriteObject(true);
             }
             else
             {
                 taggedValue.Value = Value;
-                WriteObject(false);
             }
 
             taggedValue.Update();
             element.TaggedValues.Refresh();
+            caller.WriteObject(taggedValue);
         }
     }
 }
