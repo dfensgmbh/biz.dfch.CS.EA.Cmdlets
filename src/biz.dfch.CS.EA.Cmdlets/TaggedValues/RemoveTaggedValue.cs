@@ -85,6 +85,7 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
                 }
 
                 element.TaggedValues.DeleteAt(c, true);
+                element.TaggedValues.Refresh();
                 WriteObject(true);
                 return;
             }
