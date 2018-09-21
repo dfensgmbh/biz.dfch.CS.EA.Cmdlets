@@ -36,37 +36,42 @@ namespace biz.dfch.CS.EA.Cmdlets.Tests.Stubs
             this.list = list;
         }
 
-        public object GetAt(short index)
+        public Func<string, string, T> AddNewFunc { get; set; }
+        public Func<string, T> GetByNameFunc { get; set; }
+
+        public virtual object GetAt(short index)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteAt(short index, bool refresh)
+        public virtual void DeleteAt(short index, bool refresh)
         {
             throw new NotImplementedException();
         }
 
-        public string GetLastError()
+        public virtual string GetLastError()
         {
             throw new NotImplementedException();
         }
 
-        public object GetByName(string name)
+        public virtual object GetByName(string name)
         {
-            throw new NotImplementedException();
+            if(null == GetByNameFunc) throw new NotImplementedException();
+            return GetByNameFunc.Invoke(name);
         }
 
-        public void Refresh()
+        public virtual void Refresh()
         {
-            throw new NotImplementedException();
+            return;
         }
 
-        public object AddNew(string name, string type)
+        public virtual object AddNew(string name, string type)
         {
-            throw new NotImplementedException();
+            if (null == AddNewFunc) throw new NotImplementedException();
+            return AddNewFunc(name, type);
         }
 
-        public void Delete(short index)
+        public virtual void Delete(short index)
         {
             throw new NotImplementedException();
         }
@@ -76,8 +81,8 @@ namespace biz.dfch.CS.EA.Cmdlets.Tests.Stubs
             throw new NotImplementedException();
         }
 
-        public short Count { get; }
-        public ObjectType ObjectType { get; }
+        public virtual short Count { get; }
+        public virtual ObjectType ObjectType { get; }
 
         IEnumerator IEnumerable.GetEnumerator()
         {

@@ -23,7 +23,7 @@ namespace biz.dfch.CS.EA.Cmdlets.Tests.Stubs
     {
         public bool Update()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public string GetLastError()
