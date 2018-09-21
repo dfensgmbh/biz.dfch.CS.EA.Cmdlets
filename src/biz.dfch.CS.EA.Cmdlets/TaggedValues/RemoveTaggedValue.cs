@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Management.Automation;
 using EA;
 
@@ -39,6 +40,7 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
         public static class ParameterSets
         {
             public const string DEFAULT = nameof(DEFAULT);
+            public const string ID = nameof(ID);
         }
 
         [Parameter(Mandatory = true)]
@@ -48,8 +50,11 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
         [Alias("Id")]
         public Guid ElementGuid { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ParameterSets.DEFAULT)]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSets.ID)]
+        public Guid PropertyGuid { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -65,10 +70,30 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
             var element = repository.GetElementByGuid(ElementGuid.ToString("B"));
             Contract.Assert(null != element, ElementGuid.ToString("B"));
 
+            if (ParameterSets.ID == ParameterSetName)
+            {
+                foreach (TaggedValue elementTaggedValue in element.TaggedValues)
+                {
+                    var propertyGuid = new Guid(elementTaggedValue.PropertyGUID);
+                    if (PropertyGuid != propertyGuid) continue;
+
+                    Name = elementTaggedValue.Name;
+                    break;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                var ex = new KeyNotFoundException(string.Format(Message.RemoveTaggedValue_PropertyGuidFoundException, Name));
+                WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.ObjectNotFound, Name));
+                WriteObject(false);
+                return;
+            }
+
             var taggedValue = element.TaggedValues.GetByName(Name) as TaggedValue;
             if (null == taggedValue)
             {
-                var ex = new KeyNotFoundException(string.Format(Message.RemoveTaggedValues_KeyNotFoundException, Name));
+                var ex = new KeyNotFoundException(string.Format(Message.RemoveTaggedValue_NameNotFoundException, Name));
                 WriteError(new ErrorRecord(ex, GetErrorId(ex), ErrorCategory.ObjectNotFound, Name));
                 WriteObject(false);
                 return;
