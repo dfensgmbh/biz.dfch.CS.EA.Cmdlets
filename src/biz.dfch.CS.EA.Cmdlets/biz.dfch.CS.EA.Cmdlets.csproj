@@ -169,6 +169,7 @@
       <DependentUpon>Message.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaggedValues\NewTaggedValue.cs" />
     <Compile Include="TaggedValues\RemoveTaggedValue.cs" />
     <Compile Include="TaggedValues\SetTaggedValue.cs" />
     <Compile Include="EnterpriseArchitectCmdletBase.cs" />

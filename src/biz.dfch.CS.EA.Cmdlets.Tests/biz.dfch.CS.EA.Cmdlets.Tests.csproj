@@ -157,6 +157,7 @@
       <Link>Properties\CommonAssemblySettings.cs</Link>
     </Compile>
     <Compile Include="Stubs\CollectionStub.cs" />
+    <Compile Include="TaggedValues\NewTaggedValueTest.cs" />
     <Compile Include="TaggedValues\SetTaggedValueTest.cs" />
     <Compile Include="TaggedValues\GetTaggedValueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
