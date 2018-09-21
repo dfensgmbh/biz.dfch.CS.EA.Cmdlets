@@ -36,14 +36,21 @@ namespace biz.dfch.CS.EA.Cmdlets.AutoMapper
                 .ReverseMap();
 
             CreateMap<Diagram, Diagram>(MemberList.Destination)
-                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
-                .ForMember(dest => dest.DiagramGUID, opt => opt.MapFrom(src => src.DiagramGUID))
-                .ForMember(dest => dest.DiagramID, opt => opt.MapFrom(src => src.DiagramID))
-                .ForMember(dest => dest.DiagramLinks, opt => opt.MapFrom(src => src.DiagramLinks))
-                .ForMember(dest => dest.DiagramObjects, opt => opt.MapFrom(src => src.DiagramObjects))
-                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => src.ModifiedDate))
-                .ForMember(dest => dest.SelectedConnector, opt => opt.MapFrom(src => src.SelectedConnector))
-                .ForMember(dest => dest.SelectedObjects, opt => opt.MapFrom(src => src.SelectedObjects))
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.DiagramGUID, opt => opt.Ignore())
+                .ForMember(dest => dest.DiagramID, opt => opt.Ignore())
+                .ForMember(dest => dest.DiagramLinks, opt => opt.Ignore())
+                .ForMember(dest => dest.DiagramObjects, opt => opt.Ignore())
+                .ForMember(dest => dest.ModifiedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.SelectedConnector, opt => opt.Ignore())
+                .ForMember(dest => dest.SelectedObjects, opt => opt.Ignore())
+                ;
+
+            CreateMap<DiagramObject, DiagramObject>(MemberList.Destination)
+                .ForMember(dest => dest.DiagramID, opt => opt.Ignore())
+                .ForMember(dest => dest.ElementID, opt => opt.Ignore())
+                .ForMember(dest => dest.InstanceGUID, opt => opt.Ignore())
+                .ForMember(dest => dest.InstanceID, opt => opt.Ignore())
                 ;
             //CreateMap<AuthenticationManager.LoginLogoutParameters, BasicLoginAuthInfo>(MemberList.None)
             //    .ConvertUsing<BasicLoginAuthInfoTypeConverter>();
