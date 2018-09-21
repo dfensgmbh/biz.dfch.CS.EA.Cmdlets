@@ -61,20 +61,29 @@ namespace biz.dfch.CS.EA.Cmdlets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TaggedValue {0} not found..
+        ///   Looks up a localized string similar to TaggedValue Name {0} not found..
         /// </summary>
-        internal static string RemoveTaggedValues_KeyNotFoundException {
+        internal static string RemoveTaggedValue_NameNotFoundException {
             get {
-                return ResourceManager.GetString("RemoveTaggedValues_KeyNotFoundException", resourceCulture);
+                return ResourceManager.GetString("RemoveTaggedValue_NameNotFoundException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TaggedValue {0} already exists..
+        ///   Looks up a localized string similar to TaggedValue PropertyGuid {0} not found..
         /// </summary>
-        internal static string SetTaggedValues_DuplicateNameException {
+        internal static string RemoveTaggedValue_PropertyGuidFoundException {
             get {
-                return ResourceManager.GetString("SetTaggedValues_DuplicateNameException", resourceCulture);
+                return ResourceManager.GetString("RemoveTaggedValue_PropertyGuidFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TaggedValue Name {0} already exists..
+        /// </summary>
+        internal static string SetTaggedValue_DuplicateNameException {
+            get {
+                return ResourceManager.GetString("SetTaggedValue_DuplicateNameException", resourceCulture);
             }
         }
     }
