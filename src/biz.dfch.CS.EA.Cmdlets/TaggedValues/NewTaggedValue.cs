@@ -33,7 +33,7 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
          ,
          HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/New-TaggedValue/"
     )]
-    [OutputType(typeof(bool), ParameterSetName = new[] { ParameterSets.DEFAULT })]
+    [OutputType(typeof(TaggedValue), ParameterSetName = new[] { ParameterSets.DEFAULT })]
     public class NewTaggedValue : EnterpriseArchitectCmdletBase
     {
         public static class ParameterSets
