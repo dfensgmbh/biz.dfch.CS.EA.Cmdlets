@@ -162,6 +162,7 @@
     <Compile Include="AutoMapper\ArbitraryDestinationClassMappingExpressionFactory.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\AutoMapperDefaultProfile.cs" />
+    <Compile Include="Constants\Help.cs" />
     <Compile Include="IoCScannerTypeCmdlet.cs" />
     <Compile Include="Message.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -169,6 +170,7 @@
       <DependentUpon>Message.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Convert\GetObjectType.cs" />
     <Compile Include="TaggedValues\NewTaggedValue.cs" />
     <Compile Include="TaggedValues\RemoveTaggedValue.cs" />
     <Compile Include="TaggedValues\SetTaggedValue.cs" />
@@ -187,9 +189,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
