@@ -29,7 +29,7 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
          ,
          DefaultParameterSetName = ParameterSets.DEFAULT
          ,
-         SupportsShouldProcess = true
+         SupportsShouldProcess = false
          ,
          HelpUri = "http://dfch.biz/biz/dfch/CS/EA/Cmdlets/Get-TaggedValue/"
     )]
@@ -56,22 +56,8 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
         [Parameter(Mandatory = false)]
         public SwitchParameter ValueOnly { get; set; }
 
-        //protected override void BeginProcessing()
-        //{
-        //    base.BeginProcessing();
-
-        //    TraceSource.TraceInformation("BeginProcessing. ParameterSetName '{0}'.", ParameterSetName);
-        //}
-
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-
-            if (!ShouldProcess(ParameterSetName))
-            {
-                return;
-            }
-
             var repository = GetRepository(Repository);
 
             var element = repository.GetElementByGuid(ElementGuid.ToString("B"));
@@ -105,19 +91,5 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
                 }
             }
         }
-
-        //protected override void EndProcessing()
-        //{
-        //    base.EndProcessing();
-
-        //    TraceSource.TraceInformation("EndProcessing. ParameterSetName '{0}'.", ParameterSetName);
-        //}
-
-        //protected override void StopProcessing()
-        //{
-        //    base.StopProcessing();
-
-        //    TraceSource.TraceInformation("StopProcessing. ParameterSetName '{0}'.", ParameterSetName);
-        //}
     }
 }
