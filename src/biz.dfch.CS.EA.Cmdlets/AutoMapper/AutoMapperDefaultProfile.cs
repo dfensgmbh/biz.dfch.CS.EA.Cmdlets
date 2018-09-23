@@ -51,7 +51,16 @@ namespace biz.dfch.CS.EA.Cmdlets.AutoMapper
                 .ForMember(dest => dest.ElementID, opt => opt.Ignore())
                 .ForMember(dest => dest.InstanceGUID, opt => opt.Ignore())
                 .ForMember(dest => dest.InstanceID, opt => opt.Ignore())
+                .ForMember(dest => dest.Sequence, opt => opt.Ignore())
+                .ForMember(dest => dest.Style, opt => opt.MapFrom(DiagramObjectMappingExpressionFactory.Create))
+                .ForAllMembers(opt => opt.Ignore())
                 ;
+            //CreateMap<DiagramObject, DiagramObject>(MemberList.Destination)
+            //    .ForMember(dest => dest.DiagramID, opt => opt.Ignore())
+            //    .ForMember(dest => dest.ElementID, opt => opt.Ignore())
+            //    .ForMember(dest => dest.InstanceGUID, opt => opt.Ignore())
+            //    .ForMember(dest => dest.InstanceID, opt => opt.Ignore())
+            //    ;
             //CreateMap<AuthenticationManager.LoginLogoutParameters, BasicLoginAuthInfo>(MemberList.None)
             //    .ConvertUsing<BasicLoginAuthInfoTypeConverter>();
 

@@ -16,6 +16,7 @@
 
 using System;
 using System.Linq.Expressions;
+using EA;
 
 namespace biz.dfch.CS.EA.Cmdlets.AutoMapper
 {
@@ -38,5 +39,11 @@ namespace biz.dfch.CS.EA.Cmdlets.AutoMapper
             {
                 FullName = $"{src.FirstName} {src.LastName}",
             };
+    }
+
+    public static class DiagramObjectMappingExpressionFactory
+    {
+        public static Expression<Func<DiagramObject, dynamic>> Create = src =>
+            default(Expression<Func<DiagramObject, dynamic>>);
     }
 }
