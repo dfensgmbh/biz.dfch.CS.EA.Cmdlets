@@ -67,8 +67,8 @@ namespace biz.dfch.CS.EA.Cmdlets.TaggedValues
 
             var repository = GetRepository(Repository);
 
-            var element = repository.GetElementByGuid(ElementGuid.ToString("B"));
-            Contract.Assert(null != element, ElementGuid.ToString("B"));
+            var element = repository.GetElementByGuid(ElementGuid.AsString());
+            Contract.Assert(null != element, ElementGuid.AsString());
 
             if (ParameterSets.ID == ParameterSetName)
             {
