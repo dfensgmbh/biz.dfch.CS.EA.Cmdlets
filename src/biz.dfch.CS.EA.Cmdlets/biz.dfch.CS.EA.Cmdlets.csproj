@@ -163,6 +163,7 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\AutoMapperDefaultProfile.cs" />
     <Compile Include="Constants\Help.cs" />
+    <Compile Include="GuidExtensions.cs" />
     <Compile Include="IoCScannerTypeCmdlet.cs" />
     <Compile Include="Message.Designer.cs">
       <AutoGen>True</AutoGen>
