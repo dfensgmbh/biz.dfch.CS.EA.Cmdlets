@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>biz.dfch.CS.EA.Cmdlets.Tests</RootNamespace>
     <AssemblyName>biz.dfch.CS.EA.Cmdlets.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -128,8 +128,8 @@
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="biz.dfch.CS.Testing, Version=2.1.0.18835, Culture=neutral, PublicKeyToken=ddc350d26de1d0d9, processorArchitecture=MSIL">
-      <HintPath>..\packages\biz.dfch.CS.Testing.2.1.0\lib\biz.dfch.CS.Testing.dll</HintPath>
+    <Reference Include="biz.dfch.CS.Testing, Version=2.1.1.28499, Culture=neutral, PublicKeyToken=ddc350d26de1d0d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\biz.dfch.CS.Testing.2.1.1\lib\biz.dfch.CS.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Interop.EA, Version=2.10.238.1, Culture=neutral, PublicKeyToken=d28e1c76302f6a17, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -166,7 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\biz.dfch.CS.EA.Cmdlets\biz.dfch.CS.EA.Cmdlets.csproj">
